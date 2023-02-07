@@ -20,6 +20,7 @@ public class Main {
 
         Course math = new Course("maths");
         Course english = new Course("english");
+        Course science = new Course("science");
 
         Department java = new Department("java class", List.of(math, english));
 
