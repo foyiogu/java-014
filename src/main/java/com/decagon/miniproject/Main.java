@@ -1,5 +1,7 @@
 package com.decagon.miniproject;
 
+import com.decagon.miniproject.services.PrincipalService;
+import com.decagon.miniproject.services.ServiceImplementation.PrincipalServiceImpl;
 import com.decagon.miniproject.staff.NAStaff;
 import com.decagon.miniproject.staff.Principal;
 import com.decagon.miniproject.staff.Staff;
@@ -14,6 +16,7 @@ public class Main {
     public static void main(String[] args) {
         Principal principal = new Principal("Mr A", 50);
         System.out.printf("Principal with name %s and age %d created", principal.getName(), principal.getAge());
+        System.out.println("Principal with name " + principal.getName() + " and age " +principal.getAge()+ "created");
         System.out.println("\n*******************************\n");
         Teacher teacher = new Teacher("Teacher A", 30);
         Staff nas = new NAStaff("NAS A", 25);
@@ -34,19 +37,26 @@ public class Main {
         System.out.println("\n*******************************\n");
         nas.strikeStudent(student1);
         System.out.println("\n*******************************\n");
-        principal.expel(student1);
+
+        PrincipalService ps = new PrincipalServiceImpl(principal);
+
+//        principal.expel(student1);
         System.out.println("\n*******************************\n");
         teacher.strikeStudent(student1);
-        System.out.println("\n*******************************\n");
-        principal.expel(student1);
-        System.out.println("\n*******************************\n");
+        System.out.println("\n************* Interface Method starts here ******************\n");
+//        principal.expel(student1);
+//        ps.expel(student1);
+        System.out.println("\n************* Interface Method ends here ******************\n");
+        System.out.println("\n******** admission ***********************\n");
 
-        java.teachCourse(teacher, List.of(student1, student2), "maths");
-        System.out.println("\n*******************************\n");
+        ps.admit(cd);
 
-        java.takeCourse(teacher, student1, math);
-        System.out.println("\n*******************************\n");
-        java.takeCourse(teacher, student2, math);
+//        java.teachCourse(teacher, List.of(student1, student2), "maths");
+//        System.out.println("\n*******************************\n");
+//
+//        java.takeCourse(teacher, student1, math);
+//        System.out.println("\n*******************************\n");
+//        java.takeCourse(teacher, student2, math);
 
     }
 }

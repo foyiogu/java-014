@@ -3,8 +3,10 @@ package com.decagon.miniproject.staff;
 import com.decagon.miniproject.students.Applicant;
 import com.decagon.miniproject.students.Student;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Principal extends Staff{
 
     private final Designation designation;
@@ -17,7 +19,7 @@ public class Principal extends Staff{
     public void expel(Student student){
         if (student.getStrikeCount() >= 3){
             student.setExpelled(true);
-            System.out.println(student.getName() + " has been expelled");
+//            System.out.println(student.getName() + " has been expelled");
         }else {
             System.out.println(student.getName() + " cannot be expelled");
         }
@@ -28,8 +30,9 @@ public class Principal extends Staff{
             applicant.setAdmitted(true);
             System.out.println(applicant.getName() + " is admitted");
         }else {
-            System.out.println(applicant.getName() + " is not admitted");
+            throw new RuntimeException(String.format("%s is not admitted", applicant.getName()));
         }
+
     }
 
 }
